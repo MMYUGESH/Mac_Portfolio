@@ -45,6 +45,7 @@ export function MacWindow({ win }: Props) {
   if (win.minimized) return null
 
   const isTerminal = win.appId === 'terminal'
+  const isFullBleed = isTerminal || win.appId === 'notes'
 
   return (
     <motion.div
@@ -62,7 +63,10 @@ export function MacWindow({ win }: Props) {
       initial={{ opacity: 0, scale: 0.92 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
-      onPointerDown={() => focusWindow(win.id)}
+      onPointerDown={(e) => {
+        if ((e.target as HTMLElement).closest('button')) return
+        focusWindow(win.id)
+      }}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
     >
@@ -89,7 +93,7 @@ export function MacWindow({ win }: Props) {
         </span>
       </div>
       <div
-        className={`flex-1 overflow-y-auto p-4 ${isTerminal ? 'p-0 bg-[#1e1e1e]' : ''}`}
+        className={`flex-1 overflow-y-auto p-4 ${isFullBleed ? 'p-0' : ''} ${isTerminal ? 'bg-[#0d1117]' : ''}`}
       >
         <WindowBody appId={win.appId} />
       </div>

@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import type { AppId } from '../data/apps'
 import { getApp } from '../data/apps'
-import { fitWindowSize, getWindowSlot } from '../desktop/windowLayout'
+import { clampWindowBounds, fitWindowSize, slotForApp } from '../desktop/windowLayout'
 
 export type WindowInstance = {
   id: string
@@ -34,16 +34,25 @@ export const useStore = create<Store>((set, get) => ({
   windows: [],
   topZ: 10,
   openApp: (appId) => {
-    const existing = get().windows.find((w) => w.appId === appId && !w.minimized)
+    const app = getApp(appId)
+    const { w, h } = fitWindowSize(app.defaultW, app.defaultH)
+    const { x, y } = slotForApp(appId, w, h)
+    const z = get().topZ + 1
+
+    const existing = get().windows.find((w) => w.appId === appId)
     if (existing) {
-      get().focusWindow(existing.id)
+      set({
+        topZ: z,
+        windows: get().windows.map((win) =>
+          win.id === existing.id
+            ? { ...win, x, y, w, h, z, minimized: false }
+            : win,
+        ),
+      })
       return
     }
-    const app = getApp(appId)
+
     const n = winCounter++
-    const z = get().topZ + 1
-    const { x, y } = getWindowSlot(appId)
-    const { w, h } = fitWindowSize(app.defaultW, app.defaultH)
     set({
       topZ: z,
       windows: [
@@ -73,8 +82,12 @@ export const useStore = create<Store>((set, get) => ({
     set({
       windows: get().windows.map((w) => (w.id === id ? { ...w, minimized: true } : w)),
     }),
-  moveWindow: (id, x, y) =>
+  moveWindow: (id, x, y) => {
+    const win = get().windows.find((w) => w.id === id)
+    if (!win) return
+    const clamped = clampWindowBounds(x, y, win.w, win.h)
     set({
-      windows: get().windows.map((w) => (w.id === id ? { ...w, x, y } : w)),
-    }),
+      windows: get().windows.map((w) => (w.id === id ? { ...w, x: clamped.x, y: clamped.y } : w)),
+    })
+  },
 }))

@@ -7,12 +7,31 @@ export type Project = {
   link?: string
 }
 
+export type ExperienceSection = {
+  title: string
+  icon: string
+  bullets: string[]
+}
+
 export type Experience = {
   id: string
   company: string
   role: string
   period: string
+  icon: string
+  location?: string
+  employmentType?: string
+  summary?: string
+  sections?: ExperienceSection[]
   highlights: string[]
+  skills?: string[]
+}
+
+export const KADAL_STUDIO = {
+  title: 'Kadal',
+  subtitle: 'AI product studio · Chennai',
+  description:
+    'Kadal is an AI product studio portfolio I co-built with a colleague — our own products, experiments, and case studies shipped end to end, from agents and infrastructure to interfaces.',
 }
 
 export type ResearchProject = {
@@ -25,8 +44,8 @@ export const PROFILE = {
   name: 'Yugesh M M',
   shortName: 'Yugesh',
   initials: 'YM',
-  role: 'Software Engineer · AI Products',
-  tagline: 'LLMs · Agents · RAG · Full-Stack · Ship to production',
+  role: 'AI Product Engineer · Full-Stack Developer',
+  tagline: 'AI Product Engineer · Full-Stack Developer',
   headline: 'I build AI products end to end — and ship them to production.',
   bio: `I build AI products end to end — from intelligent agents and backend infrastructure to full-stack interfaces — and ship them to production. Currently at Qualkode Technologies, building production AI across Blush, MessageBlue, Toldo, and Lana.`,
   email: 'mmyugesh@gmail.com',
@@ -40,7 +59,7 @@ export const PROFILE = {
   education: 'M.Tech Artificial Intelligence · SRM (2025–2027)',
   openToWork: true,
   openToRoles:
-    'AI Product Engineering, AI Engineer, Senior Full-Stack — Chennai, Dubai (UAE), or remote (India / US / EU teams).',
+    'AI Product Engineering, AI Engineer, Full-Stack Developer — Chennai, or remote (India / US / Canada / Dubai (UAE) / EU teams).',
 }
 
 export const IMPACT_HIGHLIGHTS = [
@@ -79,46 +98,112 @@ export const EXPERIENCES: Experience[] = [
   {
     id: 'qualkode',
     company: 'Qualkode Technologies',
+    icon: '⚡',
     role: 'Software Engineer',
-    period: 'Present',
-    highlights: [
-      'Production AI for Blush (VIP matchmaking), MessageBlue, Toldo, and Lana',
-      'LangChain agents, RAG, Langfuse observability, real-time voice AI',
-      'iMessage API layer, CRM integrations, full-stack product delivery',
-      'Team studio portfolio: Kadal — see work.kadal.cc',
+    period: 'Jun 2025 – Present',
+    location: 'United States · Remote',
+    employmentType: 'Full-time',
+    summary:
+      'Building production AI products for Blush (VIP matchmaking) and its product group: MessageBlue, Toldo, and Lana.',
+    skills: ['MongoDB', 'TypeScript', 'LangChain', 'React', 'Node.js', 'Firebase', 'Cloudflare Workers'],
+    sections: [
+      {
+        title: 'BLUSH — production AI agents & CRM',
+        icon: '🤖',
+        bullets: [
+          'Stabilized Twilio and iMessage (SendBlue) messaging: webhooks, inbound validation, group/1:1 chats, logging, Langfuse observability.',
+          'Fixed matchmaker scheduling, profile chat, and outbound calling bugs across Firebase Functions and React.',
+          'Built Appium automation for Bumble, Tinder, and Hinge profile capture.',
+          'Integrated computer vision and LLM extraction to normalize profiles into MongoDB/Firestore for rating, deduplication, and review.',
+          'Built live-call dashboards using Twilio Media Streams, WebSockets, AssemblyAI transcription, Firestore, and Langfuse AI suggestions.',
+        ],
+      },
+      {
+        title: 'LANA — iMessage AI assistant',
+        icon: '💬',
+        bullets: [
+          'Implemented user deletion, referral invites, iMessage routing, webhook debugging, conversation filters, and group-chat UX.',
+          'Automated Apple Messages.app via AppleScript and System Events — iMessages, Tapbacks, typing indicators, read receipts, group chats on distributed Mac agents.',
+        ],
+      },
+      {
+        title: 'MESSAGEBLUE — iMessage API for AI agents',
+        icon: '📡',
+        bullets: [
+          'Integrated iMessage with HubSpot, Close, Attio, GoHighLevel, and Microsoft Teams.',
+          'Co-developed AI agents: RAG, vector search, persistent conversation memory, voice-note replies, durable agent task loops.',
+          'Delivered Swagger/Postman API docs, Zapier automation, HubSpot VoIP via Chrome extension and Node.js bridge.',
+        ],
+      },
+      {
+        title: 'TOLDO — no-code AI assistant builder',
+        icon: '☁️',
+        bullets: [
+          'Engineered end-to-end features for a no-code AI assistant builder.',
+          'Built serverless features on Cloudflare Workers, Durable Objects, and D1.',
+          'Developed chat-to-creation workflows and publishing to Web, Slack, Telegram, and Teams.',
+        ],
+      },
     ],
+    highlights: [],
   },
   {
     id: 'fifth',
     company: 'The Fifth Element Consultancy',
-    role: 'Frontend Developer (Freelance)',
-    period: 'Mar – May 2025 · Dubai (Remote)',
-    highlights: ['Production React interfaces for international clients'],
+    icon: '🎨',
+    role: 'Frontend Developer',
+    period: 'Mar 2025 – May 2025',
+    location: 'Dubai, UAE · Remote',
+    employmentType: 'Freelance',
+    skills: ['Next.js', 'React.js', 'Redux Toolkit'],
+    highlights: [
+      'Led frontend for multiple interactive education portals — responsive, accessible, high-performance UIs.',
+      'Architected and shipped an AI-powered automated resume generation tool with intelligent data processing and dynamic CV formatting.',
+      'Delivered rapid features in a 3-month timeline with clean, scalable code.',
+      'Migrated legacy education portals from Angular to React — faster rendering and reusable components.',
+      'Integrated Redux Toolkit (RTK) for centralized state and streamlined API patterns.',
+    ],
   },
   {
     id: 'clubits',
     company: 'cluBITS Solutions',
-    role: 'Full Stack Developer',
+    icon: '🔧',
+    role: 'Full-stack Developer',
     period: 'Sep 2023 – Mar 2025',
+    location: 'India',
+    employmentType: 'Full-time',
+    skills: ['TypeScript', 'Fastify', 'React', 'tRPC', 'Prisma', 'SQL Server'],
     highlights: [
-      'Scalable web apps, AI-powered tools, reusable UI libraries',
-      'Microservices comms, eligibility verification, HRMS',
-      'Azure AI & Google AI in production',
+      'Designed and developed scalable web applications using React and Fastify/Express.',
+      'Built secure, type-safe APIs with tRPC and REST.',
+      'Managed relational databases with Prisma ORM and optimized queries in SQL Server.',
+      'Created reusable component libraries to standardize UI development.',
+      'Integrated Azure AI APIs — image-to-text extraction and email content generation.',
+      'Optimized API and React performance; collaborated cross-functionally with documentation.',
     ],
   },
   {
     id: 'ramco',
     company: 'Ramco Systems',
+    icon: '🏛️',
     role: 'Analyst Programmer',
     period: 'Jul 2021 – Jun 2023',
-    highlights: ['Enterprise applications and backend services at scale'],
+    location: 'Chennai, Tamil Nadu · On-site',
+    employmentType: 'Full-time',
+    skills: ['React.js', 'Storybook', 'SSMS', 'Front-End Development'],
+    highlights: [
+      'Created a Storybook-based component library to document and showcase UI components.',
+      'Implemented stored-procedure logic in SSMS to optimize backend processes.',
+      'Contributed to the design system for migrating existing product frontend to React.',
+      'Fixed component issues and customized behavior across the design system.',
+    ],
   },
 ]
 
 export const PRODUCTION_PRODUCTS: Project[] = [
   {
     title: 'MessageBlue',
-    company: 'Qualkode / Kadal client work',
+    company: 'Qualkode',
     description:
       'Agent layer for an iMessage API for AI agents — retrieval over customer knowledge, memory, voice notes, tool integrations with safe writes.',
     tech: ['Node.js', 'LLMs', 'RAG', 'WebSocket', 'HMAC'],
@@ -200,23 +285,77 @@ export const RESEARCH_PROJECTS: ResearchProject[] = [
 export const SKILL_GROUPS = [
   {
     category: 'AI / ML',
-    skills: ['LLMs', 'LangChain', 'RAG', 'NLP', 'Computer Vision', 'Python', 'Langfuse'],
+    skills: [
+      'LLMs',
+      'LangChain',
+      'RAG',
+      'Langfuse',
+      'NLP',
+      'Computer Vision',
+      'Python',
+      'Azure AI',
+      'Google AI',
+    ],
+  },
+  {
+    category: 'Languages',
+    skills: ['HTML', 'CSS', 'JavaScript', 'TypeScript'],
   },
   {
     category: 'Frontend',
-    skills: ['React', 'TypeScript', 'Next.js', 'Redux', 'MUI', 'ShadCN'],
+    skills: [
+      'React',
+      'Next.js',
+      'Redux',
+      'Material UI',
+      'ShadCN/UI',
+      'TanStack Query',
+      'TanStack Table',
+    ],
   },
   {
-    category: 'Backend',
-    skills: ['Node.js', 'Fastify', 'Express', 'tRPC', 'REST', 'Firebase Functions'],
+    category: 'Backend & APIs',
+    skills: [
+      'Node.js',
+      'Fastify',
+      'Express.js',
+      'tRPC',
+      'REST APIs',
+      'Swagger',
+      'Zod',
+      'SSE',
+      'Firebase Functions',
+    ],
   },
   {
-    category: 'Data & Cloud',
-    skills: ['MongoDB', 'Firestore', 'SQL', 'Prisma', 'Cloudflare Workers', 'Azure', 'AWS'],
+    category: 'Databases',
+    skills: ['MongoDB', 'MySQL', 'SQL Server', 'Azure SQL', 'Prisma ORM', 'Firestore'],
   },
   {
-    category: 'Integrations',
-    skills: ['Twilio', 'AssemblyAI', 'HubSpot', 'Attio', 'Teams', 'Zapier', 'iMessage'],
+    category: 'Cloud & DevOps',
+    skills: ['Azure', 'AWS SES', 'AWS SNS', 'Docker', 'Cloudflare Workers', 'Firebase'],
+  },
+  {
+    category: 'Automation & Testing',
+    skills: ['Cypress', 'Appium', 'Nightwatch'],
+  },
+  {
+    category: 'Integrations & Messaging',
+    skills: [
+      'Twilio',
+      'AssemblyAI',
+      'iMessage',
+      'AppleScript',
+      'HubSpot',
+      'Attio',
+      'GoHighLevel',
+      'Microsoft Teams',
+      'Zapier',
+    ],
+  },
+  {
+    category: 'Dev Tools & Workflow',
+    skills: ['Git', 'GitHub', 'Azure DevOps', 'Jira', 'Chrome DevTools', 'React DevTools'],
   },
 ]
 
@@ -228,18 +367,18 @@ export const MARQUEE_PHRASES = [
   'React',
   'TypeScript',
   'Node.js',
-  'AI Agents',
   'tRPC',
   'Fastify',
+  'Prisma',
   'MongoDB',
+  'Azure',
+  'AWS',
+  'Cypress',
+  'Appium',
+  'Swagger',
+  'TanStack Query',
+  'Docker',
   'Langfuse',
-  'Computer Vision',
-  'MessageBlue',
-  'Toldo',
-  'Blush',
-  'Lana',
-  'Python',
-  'NLP',
   'Firebase',
   'Cloudflare Workers',
 ]

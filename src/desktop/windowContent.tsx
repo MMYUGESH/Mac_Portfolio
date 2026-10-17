@@ -1,13 +1,14 @@
 import type { AppId } from '../data/apps'
 import {
-  EXPERIENCES,
   IMPACT_HIGHLIGHTS,
+  KADAL_STUDIO,
   LINKS,
   PROFILE,
   PROJECTS,
   RESEARCH_PROJECTS,
-  SKILL_GROUPS,
 } from '../data/content'
+import { ExperienceView } from './ExperienceView'
+import { SkillsView } from './SkillsView'
 
 export function WindowBody({ appId }: { appId: AppId }) {
   switch (appId) {
@@ -51,7 +52,7 @@ export function WindowBody({ appId }: { appId: AppId }) {
         <div className="space-y-6 font-mono text-[13px]">
           <section>
             <p className="text-violet-600 font-bold mb-3">// production @ Qualkode</p>
-            {PROJECTS.filter((p) => p.company?.includes('Qualkode') || p.company?.includes('MessageBlue') || p.company?.includes('Kadal')).map((p) => (
+            {PROJECTS.filter((p) => p.company?.includes('Qualkode') || p.company?.includes('MessageBlue')).map((p) => (
               <div key={p.title} className="border-l-2 border-violet-500 pl-3 py-2 mb-3">
                 <p className="text-base font-bold text-gray-900">{p.title}</p>
                 <p className="text-gray-500 text-xs">{p.company}{p.period ? ` · ${p.period}` : ''}</p>
@@ -87,42 +88,31 @@ export function WindowBody({ appId }: { appId: AppId }) {
         </div>
       )
     case 'terminal':
-      return (
-        <div className="font-mono text-[13px] text-green-400 bg-[#1e1e1e] -m-4 p-4 min-h-full">
-          <p className="text-gray-500">$ cat experience.log</p>
-          {EXPERIENCES.map((e) => (
-            <div key={e.id} className="mt-4 border-b border-gray-700 pb-3">
-              <p className="text-white font-bold">{e.company}</p>
-              <p className="text-gray-400">{e.role} · {e.period}</p>
-              <ul className="mt-2 text-gray-300 list-disc pl-4">
-                {e.highlights.map((h) => <li key={h}>{h}</li>)}
-              </ul>
-            </div>
-          ))}
-        </div>
-      )
+      return <ExperienceView />
     case 'messages':
       return (
-        <div className="space-y-4">
-          <p className="text-lg font-semibold text-gray-900">Let’s talk</p>
+        <div className="space-y-5">
+          <p className="text-xl font-bold text-gray-900">Let’s talk</p>
           <a href={`mailto:${PROFILE.email}`} className="block text-2xl font-bold text-blue-600 hover:underline break-all">
             {PROFILE.email}
           </a>
-          <p className="text-gray-600">{PROFILE.phone}</p>
-          <p className="text-gray-700 leading-relaxed">{PROFILE.openToRoles}</p>
+          <p className="text-base text-gray-600">{PROFILE.phone}</p>
+          <div className="rounded-xl bg-gray-100 border border-gray-200 p-4">
+            <p className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Open to</p>
+            <p className="text-base text-gray-800 leading-relaxed font-medium">{PROFILE.openToRoles}</p>
+          </div>
         </div>
       )
     case 'safari':
       return (
-        <div className="space-y-5">
+        <div className="space-y-5 text-[15px]">
           <div>
-            <h3 className="text-xl font-bold text-gray-900">Kadal · Qualkode client work</h3>
-            <p className="text-gray-600 text-sm mt-1">Chennai AI product studio — production case studies & shipped products</p>
+            <h3 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+              <span>🌊</span> {KADAL_STUDIO.title}
+            </h3>
+            <p className="text-gray-600 mt-1">{KADAL_STUDIO.subtitle}</p>
           </div>
-          <p className="text-gray-700 leading-relaxed">
-            I build production AI at <strong>Qualkode Technologies</strong> alongside the Kadal studio team.
-            Our work portfolio includes MessageBlue, Blush, Toldo, and more — end-to-end agents, infrastructure, and interfaces shipped to real users.
-          </p>
+          <p className="text-gray-800 leading-relaxed">{KADAL_STUDIO.description}</p>
           <div className="flex flex-col sm:flex-row flex-wrap gap-2">
             <a
               href={LINKS.kadalWork}
@@ -133,22 +123,6 @@ export function WindowBody({ appId }: { appId: AppId }) {
               work.kadal.cc →
             </a>
             <a
-              href={LINKS.messageblue}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-block px-5 py-2.5 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 text-center"
-            >
-              messageblue.ai
-            </a>
-            <a
-              href={LINKS.toldo}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-block px-5 py-2.5 border border-gray-300 rounded-lg font-semibold hover:bg-gray-50 text-center"
-            >
-              toldo.ai
-            </a>
-            <a
               href={LINKS.kadalHome}
               target="_blank"
               rel="noreferrer"
@@ -157,36 +131,24 @@ export function WindowBody({ appId }: { appId: AppId }) {
               kadal.cc
             </a>
           </div>
-          <ul className="text-sm text-gray-600 space-y-1 list-disc pl-5">
-            <li>MessageBlue — iMessage API agent layer & integrations</li>
-            <li>Blush — VIP matchmaking AI agents & CRM</li>
-            <li>
-              Toldo — AI assistant builder (
-              <a href={LINKS.toldo} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">toldo.ai</a>
-              )
-            </li>
-            <li>Lana — iMessage AI product</li>
-          </ul>
+          <div className="rounded-lg bg-slate-50 border border-slate-200 p-4 text-sm text-gray-700">
+            <p className="font-semibold text-gray-900 mb-2">🧪 On the work site</p>
+            <ul className="space-y-1.5 list-none">
+              <li>▸ Production AI case studies & shipped product stories</li>
+              <li>▸ Studio services — agents, full builds, performance rescue</li>
+              <li>▸ Independent portfolio — co-built with a colleague</li>
+            </ul>
+          </div>
         </div>
       )
     case 'notes':
-      return (
-        <div className="space-y-5">
-          <p className="text-xs text-gray-500 font-mono">AI/ML | LLMs | LangChain | RAG | NLP | CV | Python | React | TS | Node | Firebase | Twilio | Langfuse | Cloudflare Workers</p>
-          {SKILL_GROUPS.map((g) => (
-            <div key={g.category}>
-              <p className="text-xs font-bold uppercase text-gray-400 tracking-wider">{g.category}</p>
-              <p className="text-base font-semibold text-gray-900 mt-1 leading-relaxed">{g.skills.join('  ·  ')}</p>
-            </div>
-          ))}
-        </div>
-      )
+      return <SkillsView />
     case 'resume':
       return (
         <div className="text-center space-y-4 py-4">
           <p className="text-4xl">📄</p>
           <p className="text-xl font-bold text-gray-900">Yugesh_Resume.pdf</p>
-          <p className="text-gray-600">AI Products · Qualkode · MessageBlue · M.Tech AI</p>
+          <p className="text-gray-600">AI Product Engineer · Full-Stack Developer</p>
           <a
             href={PROFILE.resumePath}
             download

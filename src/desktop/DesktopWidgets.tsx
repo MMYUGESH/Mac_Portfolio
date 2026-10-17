@@ -31,7 +31,7 @@ export function DesktopWidgets() {
           >
             work.kadal.cc
           </a>{' '}
-          for team case studies ↓
+          for our independent studio portfolio (built with a colleague) ↓
         </p>
       </div>
 
@@ -69,7 +69,7 @@ export function DesktopWidgets() {
         </div>
 
         <div className="rounded-2xl bg-white/12 backdrop-blur-xl border border-white/20 p-4 shadow-xl pointer-events-auto">
-          <p className="text-[10px] uppercase text-white/45 mb-1">Studio portfolio</p>
+          <p className="text-[10px] uppercase text-white/45 mb-1">Kadal studio (side project)</p>
           <a
             href={LINKS.kadalWork}
             target="_blank"
