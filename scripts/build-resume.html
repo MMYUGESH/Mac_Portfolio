@@ -4,183 +4,400 @@
 <meta charset="UTF-8" />
 <title>Yugesh M M — Resume</title>
 <style>
-  @page { size: A4; margin: 12mm 13mm 10mm 13mm; }
+  @page { size: A4; margin: 0; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; font-size: 8.5pt; color: #1a1a1a; line-height: 1.32; }
-  a { color: #0a66c2; text-decoration: none; }
-  h1 { font-size: 18pt; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0; }
-  .subtitle { font-size: 9.5pt; color: #444; margin-bottom: 3pt; }
-  .contact { font-size: 8pt; color: #555; margin-bottom: 8pt; }
-  h2 { font-size: 9pt; text-transform: uppercase; letter-spacing: 1.2px; border-bottom: 1px solid #333; padding-bottom: 1pt; margin: 8pt 0 3pt; }
-  h3 { font-size: 9pt; margin-bottom: 0; }
-  .meta { font-size: 7.5pt; color: #555; margin-bottom: 1pt; }
-  .tech { font-size: 7pt; color: #0a66c2; margin-bottom: 1pt; }
-  ul { padding-left: 12pt; margin-bottom: 3pt; }
-  li { margin-bottom: 0.5pt; }
-  .cols { display: flex; gap: 20pt; }
-  .col { flex: 1; }
-  .skill-cat { font-size: 7.5pt; font-weight: 700; color: #333; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2pt; }
-  .skill-list { font-size: 8pt; color: #444; margin-bottom: 0; }
-  .section-obj { font-size: 8pt; color: #333; margin-bottom: 5pt; line-height: 1.35; }
-  .product-title { font-weight: 700; color: #222; }
-  .studio { margin-top: 4pt; font-size: 7.5pt; color: #555; }
-  .pe { margin-bottom: 4pt; }
-  .pe h3 { font-size: 8.5pt; }
+  html, body { background: #fff; }
+  body {
+    font-family: "SF Pro Display", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: #122033;
+    font-size: 9.3pt;
+    line-height: 1.36;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  .banner {
+    background: linear-gradient(120deg, #07111f 0%, #10243f 58%, #0e4f6e 100%);
+    color: #fff;
+    padding: 16px 16mm 14px;
+  }
+  .banner-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+  h1 { font-size: 22pt; letter-spacing: 1.4px; font-weight: 750; line-height: 1; }
+  .role {
+    margin-top: 6px;
+    display: inline-block;
+    font-size: 8.4pt;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: #7ee0c8;
+    font-weight: 700;
+  }
+  .contacts {
+    text-align: right;
+    font-size: 8pt;
+    color: #d7e4f2;
+    line-height: 1.55;
+  }
+  .contacts a { color: #9ae6ff; border-bottom: 1px solid rgba(154, 230, 255, 0.35); }
+  .accent-line {
+    height: 3px;
+    background: linear-gradient(90deg, #2dd4bf, #38bdf8 45%, #818cf8);
+  }
+
+  .content { padding: 11px 14mm 12px; }
+
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 9pt;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #0b3a52;
+    margin: 10px 0 6px;
+    font-weight: 800;
+  }
+  h2::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, #b7d4e4, transparent);
+  }
+  h2 .mark {
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    background: #0f766e;
+    display: inline-block;
+  }
+  h2.ai .mark { background: #4f46e5; }
+
+  .objective {
+    background: #f4f8fb;
+    border: 1px solid #d7e4ee;
+    border-left: 4px solid #0f766e;
+    border-radius: 8px;
+    padding: 8px 10px;
+    color: #243447;
+    font-size: 9.2pt;
+  }
+
+  .skill-grid {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 4px 8px;
+    align-items: start;
+  }
+  .skill-cat {
+    font-size: 7.9pt;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: #0f4c5c;
+    padding-top: 3px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 3px; }
+  .chip {
+    background: #eef6f8;
+    color: #123044;
+    border: 1px solid #d3e4ec;
+    border-radius: 999px;
+    padding: 1px 7px;
+    font-size: 8.1pt;
+    font-weight: 600;
+  }
+  .chip.ai { background: #eef2ff; border-color: #d9e0ff; color: #312e81; }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .exp {
+    border: 1px solid #e3ebf2;
+    border-radius: 8px;
+    padding: 7px 9px 6px;
+    background: #fff;
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
+  }
+  .exp .role { font-size: 9.7pt; font-weight: 750; color: #0f172a; }
+  .exp .co { font-size: 8.7pt; color: #334155; margin-top: 1px; }
+  .exp .yrs {
+    margin-top: 3px;
+    display: inline-block;
+    font-size: 7.9pt;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    color: #0f766e;
+    background: #ecfdf8;
+    border-radius: 999px;
+    padding: 1px 7px;
+  }
+  .exp.current { border-color: #99f6e4; background: linear-gradient(180deg, #f0fdfa, #fff 55%); }
+
+  .cards { display: flex; flex-direction: column; gap: 4px; }
+  .card {
+    border: 1px solid #e6eef4;
+    border-left: 3px solid #0e7490;
+    border-radius: 7px;
+    padding: 6px 8px 5px;
+    background: #fff;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .card.ai { border-left-color: #4f46e5; background: linear-gradient(90deg, #f8f7ff 0%, #fff 18%); }
+  .card h3 { font-size: 9.5pt; color: #0f172a; font-weight: 750; }
+  .card p { margin-top: 2px; color: #334155; font-size: 8.8pt; }
+  .stack { margin-top: 3px; display: flex; flex-wrap: wrap; gap: 3px; }
+  .stack span {
+    font-size: 7.5pt;
+    font-weight: 700;
+    color: #0e4f6e;
+    background: #f0f9ff;
+    border-radius: 4px;
+    padding: 1px 5px;
+  }
+  .card.ai .stack span { color: #3730a3; background: #eef2ff; }
+
+  .bottom {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .panel {
+    border: 1px solid #e3ebf2;
+    border-radius: 8px;
+    padding: 7px 9px;
+    background: #fbfdff;
+  }
+  .panel h2 { margin-top: 0; }
+  .edu { margin-bottom: 4px; }
+  .edu strong { display: block; font-size: 9.1pt; color: #0f172a; }
+  .edu span { font-size: 8.3pt; color: #475569; }
+  .studio {
+    margin-top: 8px;
+    background: #07111f;
+    color: #dbeafe;
+    border-radius: 8px;
+    padding: 7px 10px;
+    font-size: 8.5pt;
+  }
+  .studio a { color: #7ee0c8; font-weight: 700; }
+  .page-break { page-break-before: always; }
+  .cont {
+    background: #07111f;
+    color: #e2e8f0;
+    margin: 0 -14mm 8px;
+    padding: 8px 14mm;
+    font-size: 8pt;
+    letter-spacing: 0.4px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .cont b { color: #fff; letter-spacing: 1px; }
+  .cont span { color: #7ee0c8; font-weight: 700; }
 </style>
 </head>
 <body>
 
-<h1>Yugesh M M</h1>
-<p class="subtitle">AI Product Engineer · Full-Stack Developer</p>
-<p class="contact">
-  mmyugesh@gmail.com &nbsp;|&nbsp; +91 9677279963 &nbsp;|&nbsp;
-  <a href="https://www.linkedin.com/in/yugesh-m-m-246a67161/">LinkedIn</a> &nbsp;|&nbsp;
-  <a href="https://github.com/MMYUGESH">GitHub</a> &nbsp;|&nbsp;
-  <a href="https://work.kadal.cc/">work.kadal.cc</a>
-</p>
-
-<h2>Career Objective</h2>
-<p class="section-obj">
-  AI Product Engineer and Full-Stack Developer with 5 + years shipping production AI products — LLM agents, RAG pipelines, real-time voice AI, scalable web platforms, and CRM integrations. Pursuing M.Tech AI at SRM. Open to AI Product Engineering, AI Engineer, and Full-Stack Developer roles — Chennai or remote (India / US / Canada / Dubai / EU).
-</p>
-
-<h2>Technical Skills</h2>
-<div class="cols">
-  <div class="col">
-    <p class="skill-cat">AI / ML</p>
-    <p class="skill-list">LLMs, LangChain, RAG, NLP, Computer Vision, Python, Langfuse, Azure AI, Google AI</p>
-    <p class="skill-cat">Languages</p>
-    <p class="skill-list">HTML, CSS, JavaScript, TypeScript</p>
-    <p class="skill-cat">Frontend</p>
-    <p class="skill-list">React, Next.js, Redux, Material UI, ShadCN/UI, TanStack Query/Table</p>
-    <p class="skill-cat">Backend & APIs</p>
-    <p class="skill-list">Node.js, Fastify, Express, tRPC, REST, Swagger, Zod, SSE, Firebase Functions</p>
-    <p class="skill-cat">Databases</p>
-    <p class="skill-list">MongoDB, MySQL, SQL Server, Azure SQL, Prisma ORM, Firestore</p>
+<header class="banner">
+  <div class="banner-top">
+    <div>
+      <h1>YUGESH M M</h1>
+      <div class="role">AI Product Engineer · Full-Stack Developer</div>
+    </div>
+    <div class="contacts">
+      mmyugesh@gmail.com<br />
+      +91 9677279963<br />
+      <a href="https://www.linkedin.com/in/yugesh-m-m-246a67161/">LinkedIn</a>
+      &nbsp;·&nbsp;
+      <a href="https://github.com/MMYUGESH">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="https://work.kadal.cc/">work.kadal.cc</a>
+    </div>
   </div>
-  <div class="col">
-    <p class="skill-cat">Cloud & DevOps</p>
-    <p class="skill-list">Azure, AWS (SES, SNS), Docker, Cloudflare Workers, Firebase</p>
-    <p class="skill-cat">Automation & Testing</p>
-    <p class="skill-list">Cypress, Appium, Nightwatch</p>
-    <p class="skill-cat">Integrations</p>
-    <p class="skill-list">Twilio, AssemblyAI, iMessage, AppleScript, HubSpot, Attio, GoHighLevel, Teams, Zapier</p>
-    <p class="skill-cat">Dev Tools</p>
-    <p class="skill-list">Git, GitHub, Azure DevOps, Jira, Chrome DevTools, React DevTools</p>
+</header>
+<div class="accent-line"></div>
+
+<main class="content">
+
+  <h2><i class="mark"></i> Career Objective</h2>
+  <p class="objective">
+    Design and deliver production-grade AI systems and full-stack products: LLM agents with tool use and durable task loops, RAG and vector retrieval, real-time voice and messaging pipelines, and observability across prompts and traces. Strong in React/TypeScript and Node.js backends, API design (REST, tRPC), data layers (MongoDB, SQL Server, Firestore), and integrations (Twilio, iMessage, CRMs, Cloudflare Workers). Focus on reliable deployments, measurable quality, and end-to-end ownership from agent logic to user-facing interfaces.
+  </p>
+
+  <h2><i class="mark"></i> Technical Skills</h2>
+  <div class="skill-grid">
+    <div class="skill-cat">AI / ML</div>
+    <div class="chips">
+      <span class="chip ai">LLMs</span><span class="chip ai">LangChain</span><span class="chip ai">RAG</span><span class="chip ai">NLP</span><span class="chip ai">Computer Vision</span><span class="chip ai">Python</span><span class="chip ai">Langfuse</span><span class="chip ai">Azure AI</span><span class="chip ai">Google AI</span>
+    </div>
+    <div class="skill-cat">Languages</div>
+    <div class="chips">
+      <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span>
+    </div>
+    <div class="skill-cat">Frontend</div>
+    <div class="chips">
+      <span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Redux</span><span class="chip">Material UI</span><span class="chip">ShadCN/UI</span><span class="chip">TanStack Query</span><span class="chip">TanStack Table</span>
+    </div>
+    <div class="skill-cat">Backend</div>
+    <div class="chips">
+      <span class="chip">Node.js</span><span class="chip">Fastify</span><span class="chip">Express</span><span class="chip">tRPC</span><span class="chip">REST</span><span class="chip">Swagger</span><span class="chip">Zod</span><span class="chip">SSE</span><span class="chip">Firebase Functions</span>
+    </div>
+    <div class="skill-cat">Data</div>
+    <div class="chips">
+      <span class="chip">MongoDB</span><span class="chip">MySQL</span><span class="chip">SQL Server</span><span class="chip">Azure SQL</span><span class="chip">Prisma</span><span class="chip">Firestore</span>
+    </div>
+    <div class="skill-cat">Cloud</div>
+    <div class="chips">
+      <span class="chip">Azure</span><span class="chip">AWS SES</span><span class="chip">AWS SNS</span><span class="chip">Docker</span><span class="chip">Cloudflare Workers</span><span class="chip">Firebase</span>
+    </div>
+    <div class="skill-cat">Quality</div>
+    <div class="chips">
+      <span class="chip">Cypress</span><span class="chip">Appium</span><span class="chip">Nightwatch</span>
+    </div>
+    <div class="skill-cat">Integrations</div>
+    <div class="chips">
+      <span class="chip">Twilio</span><span class="chip">AssemblyAI</span><span class="chip">iMessage</span><span class="chip">AppleScript</span><span class="chip">HubSpot</span><span class="chip">Attio</span><span class="chip">GoHighLevel</span><span class="chip">Teams</span><span class="chip">Zapier</span>
+    </div>
+    <div class="skill-cat">Tools</div>
+    <div class="chips">
+      <span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Azure DevOps</span><span class="chip">Jira</span><span class="chip">Chrome DevTools</span><span class="chip">React DevTools</span>
+    </div>
   </div>
-</div>
 
-<h2>Professional Experience</h2>
+  <h2><i class="mark"></i> Professional Experience</h2>
+  <div class="exp-grid">
+    <div class="exp current">
+      <div class="role">Software Engineer</div>
+      <div class="co">Qualkode Technologies</div>
+      <div class="yrs">Jun 2025 – Present</div>
+    </div>
+    <div class="exp">
+      <div class="role">Frontend Developer</div>
+      <div class="co">The Fifth Element Consultancy</div>
+      <div class="yrs">Mar 2025 – May 2025</div>
+    </div>
+    <div class="exp">
+      <div class="role">Full-stack Developer</div>
+      <div class="co">cluBITS Solutions</div>
+      <div class="yrs">Sep 2023 – Mar 2025</div>
+    </div>
+    <div class="exp">
+      <div class="role">Analyst Programmer</div>
+      <div class="co">Ramco Systems</div>
+      <div class="yrs">Jul 2021 – Jun 2023</div>
+    </div>
+  </div>
 
-<div class="pe">
-<h3>Software Engineer — Qualkode Technologies</h3>
-<p class="meta">Full-time · Jun 2025 – Present · United States (Remote)</p>
-<p style="font-size:8pt;color:#333;margin-bottom:1pt;">Building production AI products for Blush (VIP matchmaking) and its product group: MessageBlue, Toldo, Lana.</p>
-<ul>
-  <li><span class="product-title">BLUSH:</span> Twilio/SendBlue messaging + Langfuse observability; Appium profile capture → CV+LLM extraction; live-call dashboards (Twilio Media Streams, AssemblyAI).</li>
-  <li><span class="product-title">LANA:</span> iMessage AI assistant — user mgmt, referral invites, webhook debugging, AppleScript on distributed Mac agents.</li>
-  <li><span class="product-title">MESSAGEBLUE:</span> iMessage API for AI agents — CRM integrations (HubSpot, Close, Attio, GHL, Teams), RAG agents with persistent memory + voice notes, Swagger docs, Zapier.</li>
-  <li><span class="product-title">TOLDO:</span> No-code AI assistant builder on Cloudflare Workers + Durable Objects + D1; chat-to-creation, multi-channel publish.</li>
-</ul>
-<p class="tech">LangChain · RAG · LLMs · Langfuse · React · TypeScript · Node.js · Twilio · Firebase · Cloudflare Workers · MongoDB</p>
-</div>
+  <h2><i class="mark"></i> Key Projects</h2>
+  <div class="cards">
+    <article class="card">
+      <h3>Microservices Communication Platform</h3>
+      <p>Multi-channel messaging (email, SMS, iMessage, push), file storage, and AI-assisted content generation behind type-safe APIs and validation.</p>
+      <div class="stack"><span>Node.js</span><span>Fastify</span><span>tRPC</span><span>AWS SES/SNS</span><span>Azure</span><span>Prisma</span><span>Zod</span></div>
+    </article>
+    <article class="card">
+      <h3>Eligibility Verification System</h3>
+      <p>Insurance eligibility workflows with QR card upload, server-driven updates over SSE, and optimized data tables for operations teams.</p>
+      <div class="stack"><span>React</span><span>TanStack Query</span><span>TanStack Table</span><span>Fastify</span><span>tRPC</span></div>
+    </article>
+    <article class="card">
+      <h3>Interactive Education Portals</h3>
+      <p>Responsive, accessible learning interfaces; migrated legacy Angular apps to React with shared component patterns and centralized state.</p>
+      <div class="stack"><span>Next.js</span><span>React</span><span>Redux Toolkit</span><span>TypeScript</span></div>
+    </article>
+    <article class="card">
+      <h3>Enterprise UI Component Library</h3>
+      <p>Documented reusable components in Storybook; optimized stored procedures and supported React migration of a large enterprise frontend.</p>
+      <div class="stack"><span>React</span><span>Storybook</span><span>SSMS</span></div>
+    </article>
+  </div>
 
-<div class="pe">
-<h3>Frontend Developer — The Fifth Element Consultancy</h3>
-<p class="meta">Freelance · Mar – May 2025 · Dubai, UAE (Remote)</p>
-<ul>
-  <li>Led frontend for education portals; shipped AI-powered resume generation tool; migrated Angular → React with Redux Toolkit.</li>
-</ul>
-<p class="tech">Next.js · React · Redux Toolkit · TypeScript</p>
-</div>
+  <div class="page-break"></div>
+  <div class="cont"><b>YUGESH M M</b><span>AI Product Engineer · Full-Stack Developer</span></div>
 
-<div class="pe">
-<h3>Full-stack Developer — cluBITS Solutions</h3>
-<p class="meta">Full-time · Sep 2023 – Mar 2025 · India</p>
-<ul>
-  <li>Scalable apps (React + Fastify/Express); type-safe APIs with tRPC; Prisma ORM on SQL Server; Azure AI integrations (image-to-text, email gen).</li>
-</ul>
-<p class="tech">React · TypeScript · Fastify · tRPC · Prisma · SQL Server · Azure AI</p>
-</div>
+  <h2 class="ai"><i class="mark"></i> AI Projects</h2>
+  <div class="cards">
+    <article class="card ai">
+      <h3>MessageBlue — iMessage API for AI Agents</h3>
+      <p>Agent layer with retrieval over customer knowledge, persistent memory, voice-note replies, and safe tool writes; CRM webhooks and VoIP bridges for HubSpot, Attio, GoHighLevel, and Teams.</p>
+      <div class="stack"><span>Node.js</span><span>LLMs</span><span>RAG</span><span>WebSocket</span><span>HMAC</span><span>Swagger</span><span>Zapier</span></div>
+    </article>
+    <article class="card ai">
+      <h3>Blush — VIP Matchmaking AI Agents &amp; CRM</h3>
+      <p>Production agents for client chat, scheduling, and outbound calling; Twilio/SendBlue messaging with observability; Appium capture and CV+LLM profile normalization; live-call dashboards with Media Streams and AssemblyAI transcription.</p>
+      <div class="stack"><span>LangChain</span><span>Langfuse</span><span>React</span><span>Node.js</span><span>Firebase</span><span>Twilio</span><span>Appium</span><span>MongoDB</span></div>
+    </article>
+    <article class="card ai">
+      <h3>Lana — iMessage AI Assistant</h3>
+      <p>User lifecycle, referral flows, webhook routing, and group-chat UX; AppleScript automation on distributed Mac agents for messages, tapbacks, and read receipts.</p>
+      <div class="stack"><span>Node.js</span><span>AppleScript</span><span>iMessage</span><span>React</span></div>
+    </article>
+    <article class="card ai">
+      <h3>Toldo — No-Code AI Assistant Builder</h3>
+      <p>Serverless assistant builder with chat-to-creation workflows and publishing to Web, Slack, Telegram, and Microsoft Teams.</p>
+      <div class="stack"><span>Cloudflare Workers</span><span>Durable Objects</span><span>D1</span><span>LLMs</span><span>React</span></div>
+    </article>
+    <article class="card ai">
+      <h3>AI-Powered Resume Generation</h3>
+      <p>Automated CV generation with structured data extraction, dynamic section formatting, and export-ready document output.</p>
+      <div class="stack"><span>Next.js</span><span>React</span><span>LLMs</span><span>TypeScript</span></div>
+    </article>
+    <article class="card ai">
+      <h3>EcoGradeML — Food Eco-Grade Prediction</h3>
+      <p>Ordinal classification of food eco-grades (A–E) from ingredient text using multilingual features and Open Food Facts data.</p>
+      <div class="stack"><span>Python</span><span>XGBoost</span><span>TF-IDF</span><span>CORAL</span><span>Embeddings</span><span>NLP</span></div>
+    </article>
+    <article class="card ai">
+      <h3>Sign Language Recognition</h3>
+      <p>Video pipeline with pose extraction, temporal CNN-RNN models, augmentation experiments, REST API, and React inference UI.</p>
+      <div class="stack"><span>Computer Vision</span><span>Python</span><span>CNN-RNN</span><span>React</span></div>
+    </article>
+    <article class="card ai">
+      <h3>Chennai 15-Minute City GIS</h3>
+      <p>Isochrone APIs, ward-level accessibility scoring, spatial clustering, and LLM-assisted analysis in a map-centric web app.</p>
+      <div class="stack"><span>GIS</span><span>Python</span><span>LLM</span><span>React</span></div>
+    </article>
+    <article class="card ai">
+      <h3>AI Assistants &amp; NLP Workflows</h3>
+      <p>Composable LangChain pipelines, text classification, feature engineering, and model evaluation for assistant-style applications.</p>
+      <div class="stack"><span>LangChain</span><span>LLMs</span><span>NLP</span><span>Semantic Embeddings</span></div>
+    </article>
+  </div>
 
-<div class="pe">
-<h3>Analyst Programmer — Ramco Systems</h3>
-<p class="meta">Full-time · Jul 2021 – Jun 2023 · Chennai, TN</p>
-<ul>
-  <li>Storybook component library; SSMS stored-procedure optimization; design system + React migration of enterprise UI.</li>
-</ul>
-<p class="tech">React · Storybook · SSMS · Front-End Development</p>
-</div>
+  <div class="bottom">
+    <div class="panel">
+      <h2><i class="mark"></i> Education</h2>
+      <div class="edu">
+        <strong>M.Tech — Artificial Intelligence</strong>
+        <span>SRM Institute of Science and Technology · Pursuing · CGPA 8.70 (2nd Semester)</span>
+      </div>
+      <div class="edu">
+        <strong>B.E — Electronics and Communication Engineering</strong>
+        <span>Easwari Engineering College · 73%</span>
+      </div>
+      <div class="edu">
+        <strong>HSC · 87% &nbsp;|&nbsp; SSLC · 96%</strong>
+        <span>SBOA Matriculation Hr Sec School</span>
+      </div>
+    </div>
+    <div class="panel">
+      <h2><i class="mark"></i> Certification</h2>
+      <div class="edu">
+        <strong>MERN Stack Developer</strong>
+        <span>GUVI Geek Technologies Pvt. Ltd.<br />Dec 2020 – May 2021</span>
+      </div>
+    </div>
+  </div>
 
-<h2>Key Projects</h2>
+  <div class="studio">
+    Studio portfolio &nbsp;<a href="https://work.kadal.cc/">work.kadal.cc</a>
+    &nbsp;— independent AI product studio co-built with a colleague.
+  </div>
 
-<div class="pe">
-<h3>MessageBlue — iMessage API for AI Agents &nbsp;<span class="meta">Qualkode · 2025–Present</span></h3>
-<p class="tech">Node.js · LLMs · RAG · WebSocket · HMAC · Swagger</p>
-<ul><li>Agent layer with retrieval, persistent memory, voice notes, safe tool writes; CRM webhooks for HubSpot / Attio / GHL / Teams.</li></ul>
-</div>
-
-<div class="pe">
-<h3>Blush — VIP Matchmaking AI Agents &nbsp;<span class="meta">Qualkode · 2025–Present</span></h3>
-<p class="tech">LangChain · React · Node.js · Firebase · Twilio · Appium</p>
-<ul><li>AI agents for client chat, date coordination, call booking; CV+LLM profile pipelines; live-call dashboards.</li></ul>
-</div>
-
-<div class="pe">
-<h3>Toldo — No-Code AI Assistant Builder &nbsp;<a href="https://toldo.ai/" style="font-size:7pt;">toldo.ai</a></h3>
-<p class="tech">Cloudflare Workers · Durable Objects · D1 · LLMs · React</p>
-<ul><li>Serverless AI assistant builder; chat-to-creation workflows, publish to Web / Slack / Telegram / Teams.</li></ul>
-</div>
-
-<div class="pe">
-<h3>Microservices Communication Platform &nbsp;<span class="meta">cluBITS · 2023</span></h3>
-<p class="tech">Node.js · Fastify · tRPC · AWS SES/SNS · Azure · Prisma · Zod</p>
-<ul><li>Multi-channel comms (Email, SMS, iMessage, notifications), file storage, AI content generation.</li></ul>
-</div>
-
-<div class="pe">
-<h3>Eligibility Verification System &nbsp;<span class="meta">cluBITS · 2024 · US Client</span></h3>
-<p class="tech">React · TanStack Query/Table · Fastify · tRPC</p>
-<ul><li>Insurance verification, QR card upload, real-time SSE updates.</li></ul>
-</div>
-
-<h2>AI Research & Academic Projects</h2>
-
-<div class="pe">
-<h3>EcoGradeML — Food Eco-Grade Prediction &nbsp;<span class="meta">M.Tech AI · SRM</span></h3>
-<p class="tech">Python · XGBoost · TF-IDF · CORAL · Multilingual Embeddings · NLP</p>
-<ul><li>Predicted food eco-grades (A–E) from Open Food Facts ingredient text using ordinal classification and multilingual NLP.</li></ul>
-</div>
-
-<div class="pe">
-<h3>Sign Language Recognition &nbsp;<span class="meta">M.Tech AI · SRM</span></h3>
-<p class="tech">Computer Vision · Python · CNN-RNN · React</p>
-<ul><li>Video-based recognition with pose extraction, temporal CNN-RNN, data augmentation; web API + React UI.</li></ul>
-</div>
-
-<div class="pe">
-<h3>Chennai 15-Minute City GIS &nbsp;<span class="meta">M.Tech AI · SRM</span></h3>
-<p class="tech">GIS · Python · LLM · React</p>
-<ul><li>Isochrone APIs, ward-level accessibility scoring, clustering, LLM-assisted urban planning analysis.</li></ul>
-</div>
-
-<div class="pe">
-<h3>AI Assistants & NLP Workflows &nbsp;<span class="meta">M.Tech AI · SRM</span></h3>
-<p class="tech">LangChain · LLMs · NLP · Semantic Embeddings</p>
-<ul><li>LangChain workflows, text classification, feature engineering, ML model evaluation pipelines.</li></ul>
-</div>
-
-<h2>Education</h2>
-<p><strong>M.Tech — Artificial Intelligence (Pursuing)</strong> | SRM Institute of Science and Technology | CGPA: 8.70 (2nd Semester)</p>
-<p style="margin-top:2pt;"><strong>B.E — Electronics and Communication Engineering</strong> | Easwari Engineering College | 73%</p>
-<p style="margin-top:2pt;"><strong>HSC</strong> — SBOA Matriculation Hr Sec School — 87% &nbsp;|&nbsp; <strong>SSLC</strong> — 96%</p>
-
-<h2>Certification</h2>
-<p>MERN Stack Developer | GUVI Geek Technologies Pvt. Ltd. | Dec 2020 – May 2021</p>
-
-<p class="studio">
-  <strong>Studio Portfolio:</strong> <a href="https://work.kadal.cc/">work.kadal.cc</a> — independent AI product studio co-built with a colleague.
-</p>
-
+</main>
 </body>
 </html>
